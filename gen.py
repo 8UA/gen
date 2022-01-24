@@ -2,14 +2,19 @@ import random
 import string
 import sys
 
-print("Generating output... press Ctrl+C to stop.")
+#user input
+lenght = int(input('Strings lenght : '))
+lines = int(input('How many lines to generate : '))
 
-#output file
+def randStr (chars = '[@_!#$£%^&*()<>?/\|}{~:]' + string.ascii_letters + string.digits, N=lenght):
+        return ''.join(random.choice(chars) for _ in range(N))
+
+print ("Generating output... press Ctrl+C to stop.")
+
+#output strings to file
 file_path = 'output.txt'
 sys.stdout = open(file_path, "w")
 
-#infinitely generates random strings
-while True:
-    def randStr(chars = '[@_!#$£%^&*()<>?/\|}{~:]' + string.ascii_letters + string.digits, N=16):
-        return ''.join(random.choice(chars) for _ in range(N))
-    print(randStr())
+#generating strings
+for x in range(lines):
+        print(randStr())
